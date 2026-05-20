@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #528EB8;
+  --color-brand-light: #A6D9F0;
+  --color-brand-dark: #104876;
+  --shadow-blue-glow: 0 20px 50px rgba(82, 142, 184, 0.3);
+}
+
+@layer base {
+  :root {
+    font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+      Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+    line-height: 1.5;
+    font-weight: 400;
+    color: #0f172a;
+  }
+
+  * {
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+
+  body {
+    margin: 0;
+    background: #eaf2f8;
+  }
+
+  a, button, [role="button"], summary {
+    cursor: pointer;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* Legacy utility classes still used by older pages. */
+@layer components {
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #fff;
+  }
+
+  .nav a {
+    text-decoration: none;
+  }
+
+  .muted {
+    color: #475569;
+  }
+
+  .btn {
+    appearance: none;
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .btn.primary {
+    background: #0f172a;
+    border-color: #0f172a;
+    color: #fff;
+  }
+
+  .input {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+
+  .stack {
+    display: grid;
+    gap: 12px;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .marquee-container {
+    overflow: hidden;
+  }
+
+  .animate-marquee {
+    animation: marquee 10s linear infinite;
+    display: inline-flex;
+    gap: 24px;
+  }
+
+  @keyframes title-scroll {
+    0%, 20% { transform: translateX(0); }
+    80%, 100% { transform: translateX(-50%); }
+  }
+
+  @keyframes title-fade-in {
+    0%, 20% { opacity: 0; }
+    30%, 80% { opacity: 1; }
+    80%, 100% { opacity: 1; }
+  }
+
+  .animate-title-scroll {
+    animation: title-scroll 8s linear infinite;
+  }
+
+  .animate-title-fade {
+    animation: title-fade-in 8s linear infinite;
+  }
+
+  .auth-slide-from-left,
+  .auth-slide-from-right {
+    animation-duration: 760ms;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity;
+  }
+
+  .auth-slide-from-left {
+    animation-name: authSlideFromLeft;
+  }
+
+  .auth-slide-from-right {
+    animation-name: authSlideFromRight;
+  }
+
+  @keyframes authSlideFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-5rem) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  @keyframes authSlideFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(5rem) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+
+  /* Hide default browser password reveal button */
+  input::-ms-reveal,
+  input::-ms-clear {
+    display: none;
+  }
+
+  input::-webkit-contacts-auto-fill-button,
+  input::-webkit-credentials-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+  }
+
+  .bg-brand-gradient {
+    background: linear-gradient(145deg, #a8dbf1 0%, #79b7dc 52%, #4b87b2 100%);
+  }
+
+  .btn-gradient {
+    background: linear-gradient(145deg, #a8dbf1 0%, #79b7dc 52%, #4b87b2 100%);
+    color: white;
+    transition: all 0.3s ease;
+  }
+  .btn-gradient:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(75, 135, 178, 0.3);
+  }
+}
