@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useNavigate, useParams, Link } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
 import { apiFetch } from '../lib/api'
 import { useToast } from '../components/ToastProvider'
@@ -127,7 +127,7 @@ export function AttemptPlayPage() {
         })
         setAnswers(initialAnswers)
       })
-      .catch((e) => {
+      .catch(() => {
         if (controller.signal.aborted) return
         // Hide raw Postgres errors — show a friendly message instead
         setError('Gagal memulai kuis. Silakan tekan "Coba Lagi".')
@@ -830,7 +830,6 @@ export function AttemptPlayPage() {
   if (view === 'review_question') {
     const q = reviewData!.questions[activeQuestionIndex]
     const correct = isQuestionCorrect(q)
-    const isMulti = q.questionType === 'checkbox'
 
     return (
       <div className="w-full max-w-7xl mx-auto pb-20 px-4 mt-2">

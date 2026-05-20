@@ -39,9 +39,8 @@ export function CreateQuiz() {
   const formTopRef = useRef<HTMLDivElement | null>(null)
   const questionRefs = useRef<(HTMLDivElement | null)[]>([])
   const pendingScrollToIndex = useRef<number | null>(null)
-  const formBottomRef = useRef<HTMLDivElement | null>(null)
-  const fileInputRef = useRef<HTMLInputElement | null>(null)
 
+  const formBottomRef = useRef<HTMLDivElement | null>(null)
   const scrollToTop = () => {
     formTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
@@ -98,11 +97,6 @@ export function CreateQuiz() {
   const [coverFile, setCoverFile] = useState<File | null>(null)
   const [coverPreview, setCoverPreview] = useState<string | null>(null)
 
-  const handleRemoveImage = () => {
-    setCoverFile(null)
-    setCoverPreview(null)
-    if (fileInputRef.current) fileInputRef.current.value = ''
-  }
 
   const handleQuestionImageChange = (qIdx: number, e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]

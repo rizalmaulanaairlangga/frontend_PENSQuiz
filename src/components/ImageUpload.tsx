@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { validateImageFile } from '../lib/storage';
 
 interface ImageUploadProps {

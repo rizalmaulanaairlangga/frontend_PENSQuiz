@@ -88,10 +88,6 @@ export function QuizDetailPage() {
     year: 'numeric'
   }) : 'N/A'
 
-  const handleCopyClick = () => {
-    setShowCopyModal(true)
-    setCopyError(null)
-  }
 
   const handleDirectCopy = async () => {
     setCopying(true)

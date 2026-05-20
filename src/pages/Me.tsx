@@ -24,8 +24,8 @@ export function MePage() {
   const [majors, setMajors] = useState<Major[]>([])
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState<string | null>(null)
+  const [, setError] = useState<string | null>(null)
+  const [, setSuccess] = useState<string | null>(null)
   const [majorDropdownOpen, setMajorDropdownOpen] = useState(false)
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false)
 
